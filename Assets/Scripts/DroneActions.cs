@@ -111,21 +111,21 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Up"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""33fab0ef-9498-4818-8b23-f2be97ccb288"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Down"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""2cf6a153-7f67-422c-953f-0665123bcecd"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""RollOff"",
@@ -172,7 +172,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9ea476bb-0cdc-47cc-a25a-5a4abba98c8c"",
-                    ""path"": ""<XRController>{RightHand}/{TriggerButton}"",
+                    ""path"": ""<XRController>{RightHand}/{Trigger}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -183,7 +183,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0c228f99-7ee8-4df4-841b-b50eacdee734"",
-                    ""path"": ""<XRController>{LeftHand}/{TriggerButton}"",
+                    ""path"": ""<XRController>{LeftHand}/{Trigger}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

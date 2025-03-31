@@ -18,6 +18,9 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float decelerationSpeed;
     [SerializeField] private bool rollEnabled;
+    private float height;
+    private bool up;
+    private bool down;
     private Vector2 moveInputValue;
     private Vector2 rotateInputValue;
 
@@ -38,16 +41,15 @@ public class DroneController : MonoBehaviour
 
     public void Up(InputAction.CallbackContext _context)
     {
-        Vector3 upward = new Vector3(0, verticalSpeed, 0);
-        _rigidbody.AddRelativeForce(upward, ForceMode.Acceleration);
-        Debug.Log("up");
+
+        height = _context.ReadValue<float>();
+        up = height > 0.01;
     }
 
     public void Down(InputAction.CallbackContext _context)
     {
-        Vector3 downward = new Vector3(0, verticalSpeed, 0);
-        _rigidbody.AddRelativeForce(-downward, ForceMode.Acceleration);
-        Debug.Log("down");
+        height = _context.ReadValue<float>();
+        down = height > 0.01;
     }
 
     public void DisableRoll(InputAction.CallbackContext _context)
@@ -68,7 +70,7 @@ public class DroneController : MonoBehaviour
         movement.Normalize();
         _rigidbody.AddRelativeForce(movement * speed, ForceMode.Acceleration);
 
-
+        //roll
         if (rollEnabled)
         {
             Vector3 rotation = new Vector3(0, 0, rotateInputValue.x  );
@@ -76,7 +78,8 @@ public class DroneController : MonoBehaviour
             Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
             _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
         }
-        else
+        else 
+        //yaw
         {
             Vector3 rotation = new Vector3(0, rotateInputValue.x, 0 );
             rotation.Normalize();
@@ -84,6 +87,22 @@ public class DroneController : MonoBehaviour
             _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
         }
         
+        
+        //up
+        if (up && !down)
+        {
+            Vector3 upward = new Vector3(0, verticalSpeed, 0);
+            _rigidbody.AddRelativeForce(upward * height, ForceMode.Acceleration);
+            //Debug.Log(height);
+        }
+        //down
+        if (down && !up)
+        {
+            Vector3 downward = new Vector3(0, -verticalSpeed, 0);
+            _rigidbody.AddRelativeForce(downward * height, ForceMode.Acceleration);
+            //Debug.Log(height);
+        }
+
     }
 
     private void LateUpdate()
