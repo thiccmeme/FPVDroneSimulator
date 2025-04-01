@@ -67,7 +67,7 @@ public class DroneController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(moveInputValue.y, 0, -moveInputValue.x);
-        movement.Normalize();
+        //movement.Normalize();
         _rigidbody.AddRelativeForce(movement * speed, ForceMode.Acceleration);
 
         //roll
