@@ -23,6 +23,20 @@ public class DroneController : MonoBehaviour
     private bool down;
     private Vector2 moveInputValue;
     private Vector2 rotateInputValue;
+    private Camera mainCam;
+    private SceneHandler sceneHandler;
+
+    private void Start()
+    {
+        mainCam = GetComponentInParent<Camera>();
+        sceneHandler = FindFirstObjectByType<SceneHandler>();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Floor")) return;
+        sceneHandler.Respawn();
+    }
 
 
     public void MoveDrone(InputAction.CallbackContext _context)
