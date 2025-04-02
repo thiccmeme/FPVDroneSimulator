@@ -1,18 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Vector3 = UnityEngine.Vector3;
 
 
 public class DroneController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    [SerializeField] private float roll;
-    [SerializeField] private float yaw;
-    [SerializeField] private float pitch;
-    
-    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float verticalSpeed;
@@ -69,20 +65,20 @@ public class DroneController : MonoBehaviour
     public void DisableRoll(InputAction.CallbackContext _context)
     {
         rollEnabled = false;
-        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
     }
 
     public void EnableRoll(InputAction.CallbackContext _context)
     {
         rollEnabled = true;
-        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
     }
 
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(moveInputValue.y, 0, -moveInputValue.x);
         //movement.Normalize();
-        _rigidbody.AddRelativeForce(movement * speed, ForceMode.Acceleration);
+        rigidBody.AddRelativeForce(movement * speed, ForceMode.Acceleration);
 
         //roll
         if (rollEnabled)
@@ -90,7 +86,7 @@ public class DroneController : MonoBehaviour
             Vector3 rotation = new Vector3(0, 0, rotateInputValue.x  );
             rotation.Normalize();
             Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
-            _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+            rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
         }
         else 
         //yaw
@@ -98,7 +94,7 @@ public class DroneController : MonoBehaviour
             Vector3 rotation = new Vector3(0, rotateInputValue.x, 0 );
             rotation.Normalize();
             Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
-            _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotation);
+            rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
         }
         
         
@@ -106,14 +102,14 @@ public class DroneController : MonoBehaviour
         if (up && !down)
         {
             Vector3 upward = new Vector3(0, verticalSpeed, 0);
-            _rigidbody.AddRelativeForce(upward * height, ForceMode.Acceleration);
+            rigidBody.AddRelativeForce(upward * height, ForceMode.Acceleration);
             //Debug.Log(height);
         }
         //down
         if (down && !up)
         {
             Vector3 downward = new Vector3(0, -verticalSpeed, 0);
-            _rigidbody.AddRelativeForce(downward * height, ForceMode.Acceleration);
+            rigidBody.AddRelativeForce(downward * height, ForceMode.Acceleration);
             //Debug.Log(height);
         }
 
@@ -121,6 +117,6 @@ public class DroneController : MonoBehaviour
 
     private void LateUpdate()
     {
-        _rigidbody.linearVelocity -= decelerationSpeed*_rigidbody.linearVelocity;
+        rigidBody.linearVelocity -= decelerationSpeed*rigidBody.linearVelocity;
     }
 }

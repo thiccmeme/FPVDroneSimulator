@@ -9,12 +9,14 @@ public class SceneHandler : MonoBehaviour
     [SerializeField]private float waitTime = 5.0f;
     [SerializeField] private string sceneName;
     private Camera mainCam;
+    private DroneInput droneInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         droneController = FindFirstObjectByType<DroneController>();
         mainCam = FindFirstObjectByType<Camera>();
+        droneInput = FindFirstObjectByType<DroneInput>();
     }
 
     // Update is called once per frame
@@ -32,10 +34,12 @@ public class SceneHandler : MonoBehaviour
     {
         mainCam.transform.SetParent(null);
         droneController.enabled = false;
+        droneInput.DisableInput();
 
         yield return new WaitForSeconds(waitTime);
         
         droneController.enabled = true;
+        droneInput.EnableInput();
         mainCam.transform.SetParent(droneController.transform);
         SceneManager.LoadSceneAsync(sceneName);
     }

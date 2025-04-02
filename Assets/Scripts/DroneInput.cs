@@ -19,4 +19,14 @@ public class DroneInput : MonoBehaviour
         
         droneActions.Enable();
     }
+
+    public void DisableInput()
+    {
+        droneActions.Disable();
+    }
+
+    public void EnableInput()
+    {
+        droneActions.Enable();
+    }
 }
