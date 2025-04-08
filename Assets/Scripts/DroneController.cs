@@ -22,6 +22,8 @@ public class DroneController : MonoBehaviour
     private Camera mainCam;
     private SceneHandler sceneHandler;
 
+    private GameObject currentPackage;
+
     private void Start()
     {
         mainCam = GetComponentInParent<Camera>();
@@ -118,5 +120,17 @@ public class DroneController : MonoBehaviour
     private void LateUpdate()
     {
         rigidBody.linearVelocity -= decelerationSpeed*rigidBody.linearVelocity;
+    }
+
+    public void PickUpPackage(GameObject packagePrefab)// function added by Mayank, these are pick and drop the package 
+    {
+        currentPackage = Instantiate(packagePrefab, transform);
+        currentPackage.transform.localPosition= new Vector3(0, -0.5f, 0);// attached under the drone
+    }
+    public void DropPackage(Vector3 dropPosition)
+    {
+        if (currentPackage = null) return;
+        currentPackage.transform.position = dropPosition;
+        currentPackage = null;
     }
 }
