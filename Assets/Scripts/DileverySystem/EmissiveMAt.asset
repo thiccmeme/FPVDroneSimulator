@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EmissiveMAt
   m_EditorClassIdentifier: 
   pickUp: {fileID: 2100000, guid: bb2794f9019b49c428609c8bbe441410, type: 2}
-  destination: {fileID: 0}
+  destination: {fileID: 2100000, guid: c9893387a0ebef649816bb38f73384da, type: 2}

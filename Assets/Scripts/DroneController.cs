@@ -125,12 +125,15 @@ public class DroneController : MonoBehaviour
     public void PickUpPackage(GameObject packagePrefab)// function added by Mayank, these are pick and drop the package 
     {
         currentPackage = Instantiate(packagePrefab, transform);
-        currentPackage.transform.localPosition= new Vector3(0, -0.5f, 0);// attached under the drone
+        currentPackage.GetComponent<Rigidbody>().isKinematic = true;
+        currentPackage.transform.localPosition= new Vector3(0, -2.0f, 0);// attached under the drone
     }
-    public void DropPackage(Vector3 dropPosition)
+    public void DropPackage(InputAction.CallbackContext _context)
     {
-        if (currentPackage = null) return;
-        currentPackage.transform.position = dropPosition;
+        if (currentPackage == null) return;
+        currentPackage.GetComponent<Rigidbody>().isKinematic = false;
+        currentPackage.transform.SetParent(null);
+        //currentPackage.transform.position = dropPosition;
         currentPackage = null;
     }
 }
