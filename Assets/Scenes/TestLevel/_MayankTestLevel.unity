@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502782893363586030, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1265358370749570010, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.99
@@ -1419,7 +1423,7 @@ PrefabInstance:
     - target: {fileID: 8383359521306994921, guid: 0290c1814e7a2754185de13538a04b10, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -7791486788655378091, guid: 0290c1814e7a2754185de13538a04b10, type: 3}
+      objectReference: {fileID: 2100000, guid: 719dd880508575a40b18a8e8e4823551, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
