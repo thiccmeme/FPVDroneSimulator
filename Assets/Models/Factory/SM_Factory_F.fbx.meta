@@ -3,7 +3,32 @@ guid: 557f14de40ab5d34db7419bd03503336
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brick
+    second: {fileID: 2100000, guid: 37bd14d191761704aa9fbfed98a4cfd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: ae754c12321083146a1bf7dd30373612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass_
+    second: {fileID: 2100000, guid: bf4295ab2c9433745a31bf4cc5ef4c01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tile
+    second: {fileID: 2100000, guid: 68ef8b1afbff8a14cb17dcf4c0ae5728, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: c38ce9ef9ee6ffe49b77f0d96dfedfc0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
