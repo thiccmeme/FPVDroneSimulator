@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5690497051268528096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.329, y: 2.25, z: 3.46}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.7199187, y: -0.28456634, z: 2.7199187}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1720bfc29402d514d8826fd658d93899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAlpha: 0
+  currentAlpha: 100
   currentIntensity: 0
 --- !u!114 &8345678395666393864
 MonoBehaviour:
@@ -139,4 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneType: 0
-  PackagePrefab: {fileID: 0}
+  materialSo: {fileID: 11400000, guid: d006be5840277ce4a81499202fbe6eb5, type: 2}
+  PackagePrefab: {fileID: 2679281334840671797, guid: f2efe9dfa4a1fdb40b38399875080ff4, type: 3}
+  particles: {fileID: 0}
