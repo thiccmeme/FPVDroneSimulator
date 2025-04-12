@@ -144,6 +144,15 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""48d7cc9e-1c94-4efa-a2fc-4669a4e290dd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                     ""action"": ""RollOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""beef887e-eae0-484c-806a-2c11d2c7bc73"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -226,6 +246,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         m_DroneOnGround_Down = m_DroneOnGround.FindAction("Down", throwIfNotFound: true);
         m_DroneOnGround_RollOff = m_DroneOnGround.FindAction("RollOff", throwIfNotFound: true);
         m_DroneOnGround_RollOn = m_DroneOnGround.FindAction("RollOn", throwIfNotFound: true);
+        m_DroneOnGround_Drop = m_DroneOnGround.FindAction("Drop", throwIfNotFound: true);
     }
 
     ~@DroneActions()
@@ -312,6 +333,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DroneOnGround_Down;
     private readonly InputAction m_DroneOnGround_RollOff;
     private readonly InputAction m_DroneOnGround_RollOn;
+    private readonly InputAction m_DroneOnGround_Drop;
     /// <summary>
     /// Provides access to input actions defined in input action map "DroneOnGround".
     /// </summary>
@@ -347,6 +369,10 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "DroneOnGround/RollOn".
         /// </summary>
         public InputAction @RollOn => m_Wrapper.m_DroneOnGround_RollOn;
+        /// <summary>
+        /// Provides access to the underlying input action "DroneOnGround/Drop".
+        /// </summary>
+        public InputAction @Drop => m_Wrapper.m_DroneOnGround_Drop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -391,6 +417,9 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
             @RollOn.started += instance.OnRollOn;
             @RollOn.performed += instance.OnRollOn;
             @RollOn.canceled += instance.OnRollOn;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         /// <summary>
@@ -420,6 +449,9 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
             @RollOn.started -= instance.OnRollOn;
             @RollOn.performed -= instance.OnRollOn;
             @RollOn.canceled -= instance.OnRollOn;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         /// <summary>
@@ -502,5 +534,12 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRollOn(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Drop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDrop(InputAction.CallbackContext context);
     }
 }

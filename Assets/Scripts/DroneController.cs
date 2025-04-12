@@ -22,6 +22,8 @@ public class DroneController : MonoBehaviour
     private Camera mainCam;
     private SceneHandler sceneHandler;
 
+    private GameObject currentPackage;
+
     private void Start()
     {
         mainCam = GetComponentInParent<Camera>();
@@ -44,10 +46,6 @@ public class DroneController : MonoBehaviour
     {
         rotateInputValue = _context.ReadValue<Vector2>();
     }
-    
-    //Logic for Roll here 
-    //Roll should use the grip buttons to switch modes allowing the right stick to affect roll rather than yaw changing the constraints preventing rotation on the x and y axis
-    //Alternativly Roll could use the left grip button to roll left and the right to roll right
 
     public void Up(InputAction.CallbackContext _context)
     {
@@ -65,13 +63,13 @@ public class DroneController : MonoBehaviour
     public void DisableRoll(InputAction.CallbackContext _context)
     {
         rollEnabled = false;
-        rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
+        //rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
     }
 
     public void EnableRoll(InputAction.CallbackContext _context)
     {
         rollEnabled = true;
-        rigidBody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
+        //rigidBody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
     }
 
     private void FixedUpdate()
@@ -118,5 +116,20 @@ public class DroneController : MonoBehaviour
     private void LateUpdate()
     {
         rigidBody.linearVelocity -= decelerationSpeed*rigidBody.linearVelocity;
+    }
+
+    public void PickUpPackage(GameObject packagePrefab)// function added by Mayank, these are pick and drop the package 
+    {
+        currentPackage = Instantiate(packagePrefab, transform);
+        currentPackage.GetComponent<Rigidbody>().isKinematic = true;
+        currentPackage.transform.localPosition= new Vector3(0, -2.0f, 0);// attached under the drone
+    }
+    public void DropPackage(InputAction.CallbackContext _context)
+    {
+        if (currentPackage == null) return;
+        currentPackage.GetComponent<Rigidbody>().isKinematic = false;
+        currentPackage.transform.SetParent(null);
+        //currentPackage.transform.position = dropPosition;
+        currentPackage = null;
     }
 }
