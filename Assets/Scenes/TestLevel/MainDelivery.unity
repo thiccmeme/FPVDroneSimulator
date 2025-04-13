@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30502781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3695168067410575768, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+  m_PrefabInstance: {fileID: 81958947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &74220692
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +138,7 @@ GameObject:
   - component: {fileID: 74220693}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,31 +294,45 @@ PrefabInstance:
       value: PickupZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3695168067410575768, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5690497051268528096, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3695168067410575768, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 81958955}
+      addedObject: {fileID: 81958960}
   m_SourcePrefab: {fileID: 100100000, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
 --- !u!1 &81958948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5690497051268528096, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
   m_PrefabInstance: {fileID: 81958947}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &81958955
-MonoBehaviour:
+--- !u!54 &81958960
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81958948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191290b6140c414a86639f97e7ac36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_GameObject: {fileID: 30502781}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &337677036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1610,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!1 &3918538432790981035
 GameObject:
