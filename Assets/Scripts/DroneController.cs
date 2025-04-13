@@ -14,8 +14,10 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float decelerationSpeed;
     [SerializeField] private bool rollEnabled;
+    [SerializeField] private GameObject ui;
     private float height;
     private bool up;
+    private bool uiToggled;
     private bool down;
     private Vector2 moveInputValue;
     private Vector2 rotateInputValue;
@@ -33,8 +35,14 @@ public class DroneController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Floor")) return;
+        if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Package")) return;
         sceneHandler.Respawn();
+    }
+
+    public void ToggleUi(InputAction.CallbackContext _context)
+    {
+        uiToggled = uiToggled ? false : true;
+        ui.SetActive(uiToggled); 
     }
 
 

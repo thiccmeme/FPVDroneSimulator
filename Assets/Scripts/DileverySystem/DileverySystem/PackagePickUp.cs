@@ -19,7 +19,7 @@ public class PackagePickUp : MonoBehaviour
         {
             Transform dronepos = other.transform;
             transform.SetParent(dronepos);
-            transform.localPosition = new Vector3(0, -2f, 0); // adjust under drone
+            transform.localPosition = new Vector3(0, -1f, 0); // adjust under drone
             _rb.isKinematic = true;
 
             pickedUp = true;
