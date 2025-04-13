@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeliveryManager : MonoBehaviour
 {
@@ -58,7 +59,17 @@ public class DeliveryManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("All deliveries complete!");
+           
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            if(currentScene== "Tutorial")
+            {
+                SceneManager.LoadScene("DeliveryMain");
+            }
+            else
+            {
+                Debug.Log("All deliveries complete!");
+            }
         }
     }
 
