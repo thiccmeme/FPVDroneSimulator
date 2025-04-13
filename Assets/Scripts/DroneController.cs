@@ -23,6 +23,11 @@ public class DroneController : MonoBehaviour
     private Vector2 rotateInputValue;
     private Camera mainCam;
     private SceneHandler sceneHandler;
+    
+    public float correctionDuration = 0.5f; // Time in seconds to correct the rotation
+    private Vector3 targetEulerAngles; // Target rotation angles ignoring the Y-axis
+    private float elapsedTime = 0.0f; // Timer to track elapsed time
+    private bool correctingRotation = false; // Flag to start correction
 
     private GameObject currentPackage;
     private PackagePickUp heldpackage;
@@ -71,18 +76,23 @@ public class DroneController : MonoBehaviour
 
     public void DisableRoll(InputAction.CallbackContext _context)
     {
+        if(!rollEnabled) return;
         rollEnabled = false;
+        targetEulerAngles = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+        StartRotationCorrection();
         //rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
     }
 
     public void EnableRoll(InputAction.CallbackContext _context)
     {
+        if(rollEnabled) return;
         rollEnabled = true;
         //rigidBody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        
         Vector3 movement = new Vector3(moveInputValue.y, 0, -moveInputValue.x);
         //movement.Normalize();
         rigidBody.AddRelativeForce(movement * speed, ForceMode.Acceleration);
@@ -96,7 +106,7 @@ public class DroneController : MonoBehaviour
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
         }
         else 
-        //yaw
+            //yaw
         {
             Vector3 rotation = new Vector3(0, rotateInputValue.x, 0 );
             rotation.Normalize();
@@ -119,6 +129,32 @@ public class DroneController : MonoBehaviour
             rigidBody.AddRelativeForce(downward * height, ForceMode.Acceleration);
             //Debug.Log(height);
         }
+        if (correctingRotation)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / correctionDuration);
+
+            // Smoothly interpolate the rotation ignoring the Y-axis
+            Vector3 newEulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, targetEulerAngles, progress);
+            transform.rotation = Quaternion.Euler(newEulerAngles.x, transform.rotation.eulerAngles.y, newEulerAngles.z);
+
+            // Stop correction when the target is reached
+            if (progress >= 0.99f)
+            {
+                correctingRotation = false;
+            }
+        }
+    }
+    
+    public void StartRotationCorrection()
+    {
+        correctingRotation = true;
+        elapsedTime = 0.0f;
+    }
+
+    private void FixedUpdate()
+    {
+        
 
     }
 
