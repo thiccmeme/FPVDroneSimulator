@@ -12,8 +12,9 @@ public class PackagePickUp : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
+    private void OnTriggerEnter(Collider other)
+    { 
+    
         if (pickedUp) return;
         if (other.gameObject.CompareTag("Drone"))
         {
