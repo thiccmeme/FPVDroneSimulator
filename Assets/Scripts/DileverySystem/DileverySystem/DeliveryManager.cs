@@ -5,9 +5,9 @@ public class DeliveryManager : MonoBehaviour
 {
 
     public static DeliveryManager Instance;
-    public List<Tasks> tasks;
+    public List<DeliveryTask> tasks;
     private int currentTaskindex = 0;
-    public RadarSystem radar;
+    public RadarSystem radar;   
 
     private void Awake()
     {

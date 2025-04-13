@@ -17,14 +17,16 @@ public class PackagePickUp : MonoBehaviour
         if (pickedUp) return;
         if (other.gameObject.CompareTag("Drone"))
         {
-            Transform drone = other.transform;
-            transform.SetParent(drone);
-            transform.localPosition = new Vector3(0, 2f, 0); // adjust under drone
+            Transform dronepos = other.transform;
+            transform.SetParent(dronepos);
+            transform.localPosition = new Vector3(0, -2f, 0); // adjust under drone
             _rb.isKinematic = true;
 
             pickedUp = true;
             DeliveryManager.Instance.onPickUpCollected();
-            PlayerController.instance.SetHeldPackage(this);
+            DroneController Drone = other.transform.GetComponent<DroneController>();
+            //PlayerController.instance.SetHeldPackage(this);
+            Drone.SetHeldPackage(this);
         }
     }
 

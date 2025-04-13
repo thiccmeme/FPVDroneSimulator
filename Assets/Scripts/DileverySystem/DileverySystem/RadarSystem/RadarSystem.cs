@@ -13,11 +13,13 @@ public class RadarSystem : MonoBehaviour
     private GameObject currentPickupDot;
     private GameObject currentDropDot;
 
+    public DroneController _droneController;
     private Transform Player;
 
     private void Start()
     {
-        Player = PlayerController.instance.transform;
+        
+        Player = _droneController.transform;
     }
 
     private void Update()
