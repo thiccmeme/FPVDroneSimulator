@@ -15,6 +15,7 @@ public class DroneInput : MonoBehaviour
 
             droneActions.DroneOnGround.Up.performed += droneController.Up;
             droneActions.DroneOnGround.Down.performed += droneController.Down;
+            droneActions.DroneOnGround.Drop.performed += droneController.Drop;
         }
         
         droneActions.Enable();

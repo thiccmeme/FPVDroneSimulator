@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 757f5e4b5373e5246b87ebcb236fdddb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 226229
+  packageName: Game Core - Radar System
+  packageVersion: 1.0
+  assetPath: Assets/Ilumisoft/RadarSystem/Demo/Scripts/DemoCharacterController.cs
+  uploadId: 571174

@@ -14,8 +14,10 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float decelerationSpeed;
     [SerializeField] private bool rollEnabled;
+    [SerializeField] private GameObject ui;
     private float height;
     private bool up;
+    private bool uiToggled;
     private bool down;
     private Vector2 moveInputValue;
     private Vector2 rotateInputValue;
@@ -23,6 +25,7 @@ public class DroneController : MonoBehaviour
     private SceneHandler sceneHandler;
 
     private GameObject currentPackage;
+    private PackagePickUp heldpackage;
 
     private void Start()
     {
@@ -32,8 +35,14 @@ public class DroneController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Floor")) return;
+        if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Package")) return;
         sceneHandler.Respawn();
+    }
+
+    public void ToggleUi(InputAction.CallbackContext _context)
+    {
+        uiToggled = uiToggled ? false : true;
+        ui.SetActive(uiToggled); 
     }
 
 
@@ -115,21 +124,22 @@ public class DroneController : MonoBehaviour
 
     private void LateUpdate()
     {
-        rigidBody.linearVelocity -= decelerationSpeed*rigidBody.linearVelocity;
+        rigidBody.linearVelocity -= decelerationSpeed * rigidBody.linearVelocity;
     }
 
-    public void PickUpPackage(GameObject packagePrefab)// function added by Mayank, these are pick and drop the package 
-    {
-        currentPackage = Instantiate(packagePrefab, transform);
-        currentPackage.GetComponent<Rigidbody>().isKinematic = true;
-        currentPackage.transform.localPosition= new Vector3(0, -2.0f, 0);// attached under the drone
+    public void Drop(InputAction.CallbackContext context) 
+    { 
+        if (!context.performed) return;
+        if(heldpackage!= null)
+        {
+            heldpackage.Drop();
+            heldpackage = null;
+        }
+    
     }
-    public void DropPackage(InputAction.CallbackContext _context)
+    public void SetHeldPackage(PackagePickUp package)
     {
-        if (currentPackage == null) return;
-        currentPackage.GetComponent<Rigidbody>().isKinematic = false;
-        currentPackage.transform.SetParent(null);
-        //currentPackage.transform.position = dropPosition;
-        currentPackage = null;
+        heldpackage=package;
     }
+
 }
