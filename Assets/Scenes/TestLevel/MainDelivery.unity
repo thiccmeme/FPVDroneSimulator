@@ -188,7 +188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3ab580fb9185fc640a0360321c08890c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -957,6 +957,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: ca2060f5-3302-46fe-9564-b4d4e0f46769
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: DroneOnGround/Pitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8270849254378000629}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnablePitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DroneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177375393005368810, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1544358539111628556, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9659258
@@ -1143,6 +1183,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3bec1689e0e24548911ee738719d441, type: 3}
+--- !u!114 &8270849254378000629 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3278421155439471099, guid: 1f56753d0e21fd040bb17b4f3ef1eeda, type: 3}
+  m_PrefabInstance: {fileID: 1442309303585735770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821de5c67d633c64086caf7498859aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

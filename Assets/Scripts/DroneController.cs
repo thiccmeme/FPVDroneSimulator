@@ -14,6 +14,7 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float decelerationSpeed;
     [SerializeField] private bool rollEnabled;
+    [SerializeField] private bool pitchEnabled;
     [SerializeField] private GameObject ui;
     private float height;
     private bool up;
@@ -76,8 +77,8 @@ public class DroneController : MonoBehaviour
 
     public void DisableRoll(InputAction.CallbackContext _context)
     {
-        if(!rollEnabled) return;
         rollEnabled = false;
+        pitchEnabled = false;
         targetEulerAngles = new Vector3(0, transform.rotation.eulerAngles.y, 0);
         StartRotationCorrection();
         //rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; 
@@ -87,7 +88,16 @@ public class DroneController : MonoBehaviour
     {
         if(rollEnabled) return;
         rollEnabled = true;
+        pitchEnabled = false;
         //rigidBody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
+    }
+
+    public void EnablePitch(InputAction.CallbackContext _context)
+    {
+        rollEnabled = false;
+        pitchEnabled = true;
+        targetEulerAngles = new Vector3(0, transform.rotation.eulerAngles.y, 0);
+        StartRotationCorrection();
     }
 
     private void Update()
@@ -105,10 +115,17 @@ public class DroneController : MonoBehaviour
             Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
         }
-        else 
+        else if(!rollEnabled && !pitchEnabled)
             //yaw
         {
             Vector3 rotation = new Vector3(0, rotateInputValue.x, 0 );
+            rotation.Normalize();
+            Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
+            rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
+        }
+        else
+        {
+            Vector3 rotation = new Vector3(rotateInputValue.y, 0, 0 );
             rotation.Normalize();
             Quaternion deltaRotation = Quaternion.Euler(rotation * rotationSpeed);
             rigidBody.MoveRotation(rigidBody.rotation * deltaRotation);
