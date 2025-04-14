@@ -98,7 +98,7 @@ public class Tutorial : MonoBehaviour
                 break;
             default:
                 // Make sure the MainMenu is added in the scene list
-                SceneManager.LoadSceneAsync("MainMenu");
+                SceneManager.LoadSceneAsync("MainDelivery");
                 break;
         }
     }

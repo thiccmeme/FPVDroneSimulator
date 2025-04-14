@@ -164,18 +164,18 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Back"",
+                    ""name"": ""Pitch"",
                     ""type"": ""Button"",
-                    ""id"": ""12900beb-99f4-43da-ab86-e7a8148dbc8c"",
+                    ""id"": ""ca2060f5-3302-46fe-9564-b4d4e0f46769"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pitch"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
-                    ""id"": ""ca2060f5-3302-46fe-9564-b4d4e0f46769"",
+                    ""id"": ""12900beb-99f4-43da-ab86-e7a8148dbc8c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -274,7 +274,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d07b4a0a-c76f-4fd2-bd4a-f8ed8cb3b58f"",
-                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""path"": ""<XRController>{LeftHand}/{SecondaryButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -398,8 +398,8 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DroneOnGround_RollOn;
     private readonly InputAction m_DroneOnGround_Drop;
     private readonly InputAction m_DroneOnGround_Ui;
-    private readonly InputAction m_DroneOnGround_Back;
     private readonly InputAction m_DroneOnGround_Pitch;
+    private readonly InputAction m_DroneOnGround_Back;
     /// <summary>
     /// Provides access to input actions defined in input action map "DroneOnGround".
     /// </summary>
@@ -501,12 +501,12 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
             @Ui.started += instance.OnUi;
             @Ui.performed += instance.OnUi;
             @Ui.canceled += instance.OnUi;
-            @Back.started += instance.OnBack;
-            @Back.performed += instance.OnBack;
-            @Back.canceled += instance.OnBack;
             @Pitch.started += instance.OnPitch;
             @Pitch.performed += instance.OnPitch;
             @Pitch.canceled += instance.OnPitch;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
         }
 
         /// <summary>
