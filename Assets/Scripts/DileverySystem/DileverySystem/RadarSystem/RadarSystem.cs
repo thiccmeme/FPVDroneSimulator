@@ -90,4 +90,12 @@ public class RadarSystem : MonoBehaviour
         DropTarget = target.transform;
         PickUpTarget = null;
     }
+    public void ClearDotTarget()// once the package is delivered clear drop dot from radar
+    {
+        DropTarget = null;
+        if(currentDropDot != null)
+        {
+            currentDropDot.SetActive(false);    
+        }
+    }
 }
