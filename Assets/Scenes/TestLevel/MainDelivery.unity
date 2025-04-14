@@ -584,6 +584,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b34bc3404574ed488bb4be2f2180fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &700599567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146174585223993638, guid: d3bec1689e0e24548911ee738719d441, type: 3}
+  m_PrefabInstance: {fileID: 1570952703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &985449432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5690497051268528096, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+  m_PrefabInstance: {fileID: 1624637743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &989315672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146174585223993638, guid: d3bec1689e0e24548911ee738719d441, type: 3}
+  m_PrefabInstance: {fileID: 1652852667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1165218081
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +678,18 @@ MonoBehaviour:
   - pickupZone: {fileID: 81958948}
     dropZone: {fileID: 5690497051919989000}
     isCompleted: 0
+  - pickupZone: {fileID: 985449432}
+    dropZone: {fileID: 989315672}
+    isCompleted: 0
+  - pickupZone: {fileID: 1344517881}
+    dropZone: {fileID: 700599567}
+    isCompleted: 0
   radar: {fileID: 5038906198286830117}
+--- !u!1 &1344517881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5690497051268528096, guid: 42891930dbe701c4eb9cb44b6da7eaab, type: 3}
+  m_PrefabInstance: {fileID: 18217110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1570952703
 PrefabInstance:
   m_ObjectHideFlags: 0
