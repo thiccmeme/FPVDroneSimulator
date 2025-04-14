@@ -164,6 +164,15 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""12900beb-99f4-43da-ab86-e7a8148dbc8c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Pitch"",
                     ""type"": ""Button"",
                     ""id"": ""ca2060f5-3302-46fe-9564-b4d4e0f46769"",
@@ -264,6 +273,17 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d07b4a0a-c76f-4fd2-bd4a-f8ed8cb3b58f"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c3fa5e6d-2087-40dd-865d-7ae9ee493466"",
                     ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
                     ""interactions"": """",
@@ -289,6 +309,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         m_DroneOnGround_Drop = m_DroneOnGround.FindAction("Drop", throwIfNotFound: true);
         m_DroneOnGround_Ui = m_DroneOnGround.FindAction("Ui", throwIfNotFound: true);
         m_DroneOnGround_Pitch = m_DroneOnGround.FindAction("Pitch", throwIfNotFound: true);
+        m_DroneOnGround_Back = m_DroneOnGround.FindAction("Back", throwIfNotFound: true);
     }
 
     ~@DroneActions()
@@ -377,6 +398,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DroneOnGround_RollOn;
     private readonly InputAction m_DroneOnGround_Drop;
     private readonly InputAction m_DroneOnGround_Ui;
+    private readonly InputAction m_DroneOnGround_Back;
     private readonly InputAction m_DroneOnGround_Pitch;
     /// <summary>
     /// Provides access to input actions defined in input action map "DroneOnGround".
@@ -425,6 +447,10 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "DroneOnGround/Pitch".
         /// </summary>
         public InputAction @Pitch => m_Wrapper.m_DroneOnGround_Pitch;
+        /// <summary>
+        /// Provides access to the underlying input action "DroneOnGround/Back".
+        /// </summary>
+        public InputAction @Back => m_Wrapper.m_DroneOnGround_Back;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -475,6 +501,9 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
             @Ui.started += instance.OnUi;
             @Ui.performed += instance.OnUi;
             @Ui.canceled += instance.OnUi;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
             @Pitch.started += instance.OnPitch;
             @Pitch.performed += instance.OnPitch;
             @Pitch.canceled += instance.OnPitch;
@@ -516,6 +545,9 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
             @Pitch.started -= instance.OnPitch;
             @Pitch.performed -= instance.OnPitch;
             @Pitch.canceled -= instance.OnPitch;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
         }
 
         /// <summary>
@@ -619,5 +651,12 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPitch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Back" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBack(InputAction.CallbackContext context);
     }
 }
