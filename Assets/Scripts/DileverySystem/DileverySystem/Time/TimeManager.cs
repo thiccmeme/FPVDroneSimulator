@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;    
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
@@ -9,9 +11,13 @@ public class TimeManager : MonoBehaviour
 
     public TextMeshProUGUI timerText;
     private bool timerRunning = true;
+    public GameObject LoseCanvas;
+    private SceneHandler sceneHandler;
 
     private void Start()
     {
+        sceneHandler = FindFirstObjectByType<SceneHandler>();
+        LoseCanvas.SetActive(false);
         currentTime = maxTime;
 
     }
@@ -37,6 +43,14 @@ public class TimeManager : MonoBehaviour
     }
     private void OnTimerEnd()
     {
+        LoseCanvas.SetActive(true);
+        StartCoroutine("Lose");
         Debug.Log("Time Up");
+    }
+
+    private IEnumerator Lose()
+    {
+        yield return new WaitForSeconds(1.5f);
+        sceneHandler.Respawn();
     }
 }
