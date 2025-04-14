@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,8 @@ public class DeliveryManager : MonoBehaviour
     public static DeliveryManager Instance;
     public List<DeliveryTask> tasks;
     private int currentTaskindex = 0;
-    public RadarSystem radar;   
+    public RadarSystem radar;
+    public GameObject winCanvas;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class DeliveryManager : MonoBehaviour
 
     private void Start()
     {
+        winCanvas.SetActive(false);
         HideAllTask();
 
         ActivatecurrentPickup();
@@ -70,8 +73,17 @@ public class DeliveryManager : MonoBehaviour
             else
             {
                 Debug.Log("All deliveries complete!");
+                winCanvas.SetActive(true);
+                StartCoroutine(Win());
+
             }
         }
+    }
+
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("TutorialLevel");
     }
 
     public void HideAllTask()
