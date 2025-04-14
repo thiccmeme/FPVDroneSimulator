@@ -18,7 +18,7 @@ public class DroneController : MonoBehaviour
     [SerializeField] private GameObject ui;
     private float height;
     private bool up;
-    private bool uiToggled;
+    private bool uiToggled = true;
     private bool down;
     private Vector2 moveInputValue;
     private Vector2 rotateInputValue;
