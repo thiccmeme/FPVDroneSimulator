@@ -27,14 +27,15 @@ public class SceneHandler : MonoBehaviour
 
     public void Respawn()
     {
+        droneInput.DisableInput();
+        droneController.enabled = false;
         StartCoroutine(RespawnRoutine());
     }
 
     private IEnumerator RespawnRoutine()
     {
         mainCam.transform.SetParent(null);
-        droneController.enabled = false;
-        droneInput.DisableInput();
+        
 
         yield return new WaitForSeconds(waitTime);
         
