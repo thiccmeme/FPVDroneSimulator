@@ -21,6 +21,15 @@ public class RadarSystem : MonoBehaviour
         
         Player = _droneController.transform;
     }
+    
+    public void ClearDotTarget()// once the package is delivered clear drop dot from radar
+    {
+        DropTarget = null;
+        if(currentDropDot != null)
+        {
+            currentDropDot.SetActive(false);    
+        }
+    }
 
     private void Update()
     {

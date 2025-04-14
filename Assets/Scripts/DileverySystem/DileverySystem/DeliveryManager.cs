@@ -51,7 +51,8 @@ public class DeliveryManager : MonoBehaviour
     {
         tasks[currentTaskindex].dropZone.SetActive(false);
         tasks[currentTaskindex].isCompleted = true;
-
+        
+        radar.ClearDotTarget();
         currentTaskindex++;
         if (currentTaskindex < tasks.Count)
         {
