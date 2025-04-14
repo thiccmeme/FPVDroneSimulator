@@ -47,7 +47,7 @@ public class DroneController : MonoBehaviour
 
     public void ToggleUi(InputAction.CallbackContext _context)
     {
-        uiToggled = uiToggled ? false : true;
+        uiToggled = !uiToggled;
         ui.SetActive(uiToggled); 
     }
 

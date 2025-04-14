@@ -274,7 +274,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d07b4a0a-c76f-4fd2-bd4a-f8ed8cb3b58f"",
-                    ""path"": ""<XRController>{LeftHand}/{SecondaryButton}"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -285,7 +285,7 @@ public partial class @DroneActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c3fa5e6d-2087-40dd-865d-7ae9ee493466"",
-                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""path"": ""<XRController>{LeftHand}/{SecondaryButton}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
