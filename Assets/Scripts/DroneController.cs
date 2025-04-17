@@ -15,6 +15,9 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float decelerationSpeed;
     [SerializeField] private bool rollEnabled;
     [SerializeField] private GameObject ui;
+    [SerializeField] private AudioClip _droneClip;
+    [SerializeField] private AudioClip _droneloop;
+        
     private float height;
     private bool up;
     private bool uiToggled;
@@ -23,7 +26,8 @@ public class DroneController : MonoBehaviour
     private Vector2 rotateInputValue;
     private Camera mainCam;
     private SceneHandler sceneHandler;
-    
+    private AudioSource _audioSource;
+
     public float correctionDuration = 0.5f; // Time in seconds to correct the rotation
     private Vector3 targetEulerAngles; // Target rotation angles ignoring the Y-axis
     private float elapsedTime = 0.0f; // Timer to track elapsed time
@@ -36,6 +40,7 @@ public class DroneController : MonoBehaviour
     {
         mainCam = GetComponentInParent<Camera>();
         sceneHandler = FindFirstObjectByType<SceneHandler>();
+        _audioSource = GetComponentInParent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -54,6 +59,25 @@ public class DroneController : MonoBehaviour
     public void MoveDrone(InputAction.CallbackContext _context)
     {
         moveInputValue = _context.ReadValue<Vector2>();
+        bool isMoving = moveInputValue.magnitude > 0.1f;
+
+        if (isMoving)
+        {
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.clip = _droneClip;
+                _audioSource.loop = true;
+                _audioSource.Play();
+            }
+        }
+        else
+        {
+            // Only stop if not going up (to prevent cutting lift sound)
+            if (!up)
+            {
+                _audioSource.Stop();
+            }
+        }
     }
 
     public void RotateDrone(InputAction.CallbackContext _context)
@@ -66,7 +90,21 @@ public class DroneController : MonoBehaviour
 
         height = _context.ReadValue<float>();
         up = height > 0.01;
+        if (up)
+        {
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.clip = _droneClip;
+                _audioSource.Play();
+            }
+        }
+        else
+        {
+            // Stop the engine sound when input is released
+            _audioSource.Stop();
+        }
     }
+    
 
     public void Down(InputAction.CallbackContext _context)
     {
